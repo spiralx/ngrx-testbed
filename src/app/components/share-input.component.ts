@@ -16,7 +16,7 @@ import { Component, Output, EventEmitter } from '@angular/core'
 export class ShareInputComponent {
   @Output() addShare = new EventEmitter()
 
-  add(holderName, count){
+  add(holderName, count) {
     this.addShare.emit({ holderName: holderName.value, count: count.value })
     holderName.value = ''
     count.value = '1'
