@@ -1,18 +1,48 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule } from '@angular/core'
+import { BrowserModule } from '@angular/platform-browser'
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
+import { HttpClientModule } from '@angular/common/http'
 
+import { StoreModule } from '@ngrx/store'
+import { StoreDevtoolsModule } from '@ngrx/store-devtools'
 
-import { AppComponent } from './app.component';
+import { MaterialModule } from './material.module'
 
+import { ApiService } from './services/index'
+import { reducers } from './reducers/index'
+
+import { AppComponent } from './app.component'
+import { SharePageComponent } from './containers/share-page.component'
+import { ShareTableComponent, ShareItemComponent } from './components/share-table.component'
+import { ShareInputComponent } from './components/share-input.component'
+import { DebugPanelComponent } from './components/debug-panel.component'
+
+// ----------------------------------------------------
 
 @NgModule({
-  declarations: [
-    AppComponent
-  ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    BrowserAnimationsModule,
+    HttpClientModule,
+    MaterialModule,
+    StoreModule.forRoot(reducers),
+    StoreDevtoolsModule.instrument({
+      maxAge: 25
+    })
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+  declarations: [
+    AppComponent,
+    SharePageComponent,
+    ShareTableComponent,
+    ShareItemComponent,
+    ShareInputComponent,
+    DebugPanelComponent
+  ],
+  providers: [
+    ApiService
+  ],
+  bootstrap: [
+    AppComponent
+  ]
 })
 export class AppModule { }
