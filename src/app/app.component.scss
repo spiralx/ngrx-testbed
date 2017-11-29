@@ -1,5 +1,12 @@
+$content-width: 1024px;
 $content-padding: 32px;
 
+.screen-wrapper {
+  min-height: 100%;
+}
+
 .content {
-  padding: $content-padding;
+  // padding: $content-padding;
+  margin: $content-padding auto;
+  max-width: $content-width;
 }

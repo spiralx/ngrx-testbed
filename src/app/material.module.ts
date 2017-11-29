@@ -37,18 +37,18 @@ import {
 
 
 /**
- * NgModule that includes all Material modules that are required to serve 
+ * NgModule that includes all Material modules that are required to serve
  * the Plunker.
  */
 @NgModule({
   exports: [
     // Flex layout
-    // FlexLayoutModule,
-    
+    FlexLayoutModule,
+
     // CDk
     CdkTableModule,
     OverlayModule,
-    
+
     // Material
     MatAutocompleteModule,
     MatButtonModule,
@@ -76,7 +76,7 @@ import {
     MatTabsModule,
     MatToolbarModule,
     MatTooltipModule,
-    
+
     MatNativeDateModule,
     MatSortModule,
     MatPaginatorModule
