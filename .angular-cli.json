@@ -66,6 +66,7 @@
     },
     "lintFix": true
   },
+  "packageManager": "yarn",
   "warnings": {
     "typescriptMismatch": false
   }
