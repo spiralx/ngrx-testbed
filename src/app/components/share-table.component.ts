@@ -3,7 +3,7 @@ import { Component, Input, Output, EventEmitter } from '@angular/core'
 // ----------------------------------------------------
 
 @Component({
-  selector: 'share-item',
+  selector: 'sl-share-item',
   template: `
     <div class="share-item">
       <span>{{share.id}}</span>
@@ -22,7 +22,7 @@ export class ShareItemComponent {
 // ----------------------------------------------------
 
 @Component({
-  selector: 'share-table',
+  selector: 'sl-share-table',
   template: `
     <div class="share-table">
       <div class="header">
@@ -31,37 +31,16 @@ export class ShareItemComponent {
         <span class="header actions">Actions</span>
       </div>
 
-      <share-item
+      <sl-share-item
         *ngFor="let share of shares"
         [share]="share"
         (deleteShare)="deleteShare.emit(share)"
-      ></share-item>
+      ></sl-share-item>
     </div>
-    
-    <share-input (addShare)="addShare.emit($event)"></share-input>
+
+    <sl-share-input (addShare)="addShare.emit($event)"></sl-share-input>
   `,
-  styles: [`
-    .share-table {
-      border: solid 1px #888;
-      margin: 1em auto 2em;
-    }
-    
-    .header, .share-item {
-      display: grid;
-      // grid-column-gap: 0.5em;
-      grid-template-columns: repeat(3, 1fr);
-      /* grid-template-areas:
-         "hid*/
-    }
-    
-    .header + share-item {
-      border-top: solid 1px #888;
-    }
-    
-    .header span, .share-item span {
-      padding: 0.25em 0.5em;
-    }
-  `]
+  styleUrls: [ './share-table.component.scss' ]
 })
 export class ShareTableComponent {
   @Input() shares

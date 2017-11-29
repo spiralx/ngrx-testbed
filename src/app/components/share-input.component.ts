@@ -3,7 +3,7 @@ import { Component, Output, EventEmitter } from '@angular/core'
 // ----------------------------------------------------
 
 @Component({
-  selector: 'share-input',
+  selector: 'sl-share-input',
   template: `
     <div class="share-input">
       <form>

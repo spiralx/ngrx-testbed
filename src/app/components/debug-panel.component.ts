@@ -3,7 +3,7 @@ import { Component, Input } from '@angular/core'
 // ----------------------------------------------------
 
 @Component({
-  selector: 'debug-panel',
+  selector: 'sl-debug-panel',
   template: `
     <pre>{{data | json}}</pre>
   `
