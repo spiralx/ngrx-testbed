@@ -1,0 +1,116 @@
+$layout-breakpoint-xs: 600px;
+$layout-breakpoint-sm: 960px;
+$layout-breakpoint-md: 1280px;
+$layout-breakpoint-lg: 1920px;
+
+$toolbarHeight: 55px;
+
+$background-colour: #fcfcfc;
+$hint-colour: rgba(0, 0, 0, 0.54);
+
+// aka .md-accent-fg.md-hue-2
+$teal: #00897b;
+
+$primary-colour: #1a3865;
+
+$accent-colour: #00887a;
+$accent-colour-light: #1abc9c;
+
+$warn-colour: #ff5722;
+
+$grey-colour: #4a4a4a;
+$grey-colour-light: #9b9b9b;
+
+// ------------------------------------------------------------
+// Notifications
+
+$notification-panel-width: 256px;
+$notification-panel-max-height: 400px;
+
+$notification-item-height: 80px;
+$notification-item-padding: 12px;
+
+$notification-unread-colour: #9c27b0;
+$notification-panel-base: black;
+
+$notification-panel-unread-opacity: 0.2;
+$notification-panel-hover-opacity: 0.1;
+
+$notification-panel-border-radius: 4px;
+
+// ------------------------------------------------------------
+// Colours for document types
+
+$document-type-colour-map: (
+  'AP01': 'teal',
+  'ARAS': 'brown',
+  'ASOS': 'orange',
+  'BORE': 'teal',
+  'BSAR': 'brown',
+  'BSBR': 'teal',
+  'BSSA': 'amber',
+  'BSSR': 'lime',
+  'BSTS': 'yellow',
+  'COAG': 'pink',
+  'DEED': 'green',
+  'DISC': 'blue-grey',
+  'DUDI': 'light-blue',
+  'EMPA': 'deep-orange',
+  'FSRV': 'red',
+  'HNWC': 'indigo',
+  'IPAS': 'purple',
+  'MNDA': 'deep-purple',
+  'PICN': 'light-green',
+  'SDWR': 'lime',
+  'SERV': 'red',
+  'SH01': 'amber',
+  'SH02': 'deep-purple',
+  'SHAG': 'amber',
+  'SHRE': 'lime',
+  'SINC': 'blue',
+  'SIND': 'cyan',
+  'SPEN': 'light-green',
+  'TESH': 'yellow'
+);
+
+// ------------------------------------------------------------
+// Colours for appointment roles
+
+$appointment-role-colour-map: (
+  'read': (
+    'background-color': material-color('light-blue', '200'),
+    'color': black
+  ),
+  'admin': (
+    'background-color': material-color('red', '800'),
+    'color': white
+  ),
+  'director': (
+    'background-color': material-color('amber', '700'),
+    'color': white
+  ),
+  'signatory': (
+    'background-color': material-color('blue', '800'),
+    'color': white
+  ),
+  'founder': (
+    'background-color': material-color('teal', '700'),
+    'color': white
+  ),
+  'familyFounder': (
+    'background-color': material-color('light-green', '800'),
+    'color': white
+  ),
+  'foundingEmployee': (
+    'background-color': material-color('lime', '800'),
+    'color': white
+  ),
+  'shareholder': (
+    'background-color': material-color('grey', '600'),
+    'color': white
+  ),
+  'investor': (
+    'background-color': material-color('blue-grey', '800'),
+    'color': white
+  )
+);

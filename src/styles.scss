@@ -1,0 +1,230 @@
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+
+@import 'variables';
+@import 'mixins';
+@import 'typography';
+@import 'colors';
+
+// ------------------------------------------------------------
+
+html, body, app-root {
+  margin: 0;
+  width: 100%;
+  height: 100%;
+  font-family: $sansSerifFontFamily;
+}
+
+// Material Design Icons small hacks for alignment
+button.mat-menu-item {
+  line-height: 24px !important;
+}
+
+a.mat-menu-item > mat-icon {
+  margin-bottom: 14px;
+}
+
+.mat-icon svg {
+  height: 24px;
+  width: 24px;
+}
+
+// Use this in a span to simulate space-between, sometimes more convenient this way
+.fill-remaining-space {
+  flex: 1 1 auto;
+}
+
+// ------------------------------------------------------------
+
+.page-container {
+  width: 100%;
+  max-width: 1024px;
+
+  margin: 0 auto 128px;
+  padding: 16px;
+
+  &.wider-layout {
+    max-width: 1280px;
+  }
+
+  &.wide-layout {
+    max-width: 100%;
+
+    margin-right: 0;
+    margin-left: 0;
+  }
+
+  &.full-width {
+    max-width: 100%;
+
+    margin-right: 0;
+    margin-left: 0;
+    padding: 0;
+  }
+}
+
+// ------------------------------------------------------------
+
+// Avatars
+.avatar {
+  width: 40px;
+  min-width: 40px;
+  height: 40px;
+  line-height: 40px;
+  margin: 0 8px 0 0;
+  border-radius: 50%;
+  font-size: 17px;
+  font-weight: 500;
+  text-align: center;
+  color: #FFFFFF;
+
+  &.square {
+    border-radius: 0;
+  }
+
+  &.small {
+    width: 32px;
+    min-width: 32px;
+    height: 32px;
+    line-height: 32px;
+  }
+
+  &.smaller {
+    width: 20px;
+    min-width: 20px;
+    height: 20px;
+    line-height: 20px;
+  }
+
+  &.big {
+    width: 72px;
+    min-width: 72px;
+    height: 72px;
+    line-height: 72px;
+  }
+
+  &.huge {
+    width: 96px;
+    min-width: 96px;
+    height: 96px;
+    line-height: 96px;
+  }
+
+  &.company {
+    border-radius: 2px;
+  }
+}
+
+// ------------------------------------------------------------
+
+.avatar {
+  &.expand-on-hover {
+    @include hover-expand();
+  }
+
+  &.clickable {
+    @include hover-expand();
+  }
+
+  // Override small size
+  &.small {
+    @include square-image(24px);
+    margin: 0 3px 0 0;
+  }
+
+  // Extra size classes
+  &.huger {
+    @include square-image(128px);
+  }
+
+  &.hugest {
+    @include square-image(180px);
+    margin-right: 0;
+  }
+
+  // Generic size classes
+  $avatar-sizes: 18 24 30 36 42 48 60 72 96 128 160;
+
+  @each $size in $avatar-sizes {
+    &.s#{$size} {
+      @include square-image(#{$size + 'px'});
+      // width: #{$size + 'px'};
+      // height: #{$size + 'px'};
+      // line-height: #{$size + 'px'};
+    }
+  }
+
+  md-icon {
+    margin: 0 !important;
+  }
+}
+
+// ------------------------------------------------------------
+
+// $company-logo-size: 76px;
+$company-logo-size: 88px;
+
+img.company-logo {
+  @include square-image($company-logo-size);
+  @include deep-shadow();
+
+  background-color: white;
+  padding: 5px;
+  border-radius: 5px;
+
+  &.company-logo-flat {
+    @include drop-shadow(1px);
+  }
+}
+
+// ------------------------------------------------------------
+
+// ul.bold-links {
+//   list-style-type: none;
+//   margin: 0;
+//   padding: 0;
+
+//   li {
+//     padding: 8px 0;
+
+//     a {
+//       @extend .h4;
+//       @extend .text-bold;
+//     }
+//   }
+// }
+
+// ------------------------------------------------------------
+
+.list-actions {
+  margin-top: 1em;
+  margin-bottom: 1em;
+
+  .md-button {
+    margin: 0 1em 0 0;
+    padding: 0.15em 0.5em 0.3em;
+
+    color: #888;
+
+    > * {
+      line-height: 24px;
+      vertical-align: middle;
+      color: inherit;
+    }
+
+    span {
+      padding-left: 0.25em;
+      font-size: 18px;
+      font-weight: normal;
+      text-transform: none;
+    }
+  }
+}
+
+// ------------------------------------------------------------
+
+.title-row {
+  .md-button {
+    margin-right: 0px;
+    padding-right: 0px;
+  }
+}

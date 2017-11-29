@@ -1,0 +1,168 @@
+
+@mixin square-image($size) {
+  width: $size;
+  min-width: $size;
+  height: $size;
+  line-height: $size;
+}
+
+
+// ------------------------------------------------------------
+
+@mixin background-cover($height) {
+  background-position: center center;
+  background-size: cover;
+
+  @if not unitless($height) {
+    height: $height;
+    min-height: $height;
+  }
+}
+
+
+// ------------------------------------------------------------
+
+$box-shadow-colour-1: rgba(0, 0, 0, 0.12);
+$box-shadow-colour-2: rgba(0, 0, 0, 0.24);
+
+@mixin drop-shadow($size: 3px) {
+  box-shadow: 0 $size ($size * 2) $box-shadow-colour-1,
+    0 $size ($size * 2) $box-shadow-colour-2;
+}
+
+@mixin deep-shadow() {
+  box-shadow: 0 15px 20px 0 $box-shadow-colour-2,
+    0 12px 12px 0 $box-shadow-colour-1;
+}
+
+
+// ------------------------------------------------------------
+
+@mixin hover-expand($duration: 0.25s, $easing: ease-in-out, $scale-factor: 1.2) {
+  transition: all $duration $easing;
+
+  &:hover {
+    transform: scale($scale-factor);
+    opacity: 1;
+  }
+}
+
+
+// @mixin hover-opacity($base-colour: currentColor, $base-opacity: 0.5, $hover-opacity: 1, $duration: 0.25s, $easing: ease-in-out) {
+@mixin hover-opacity($base-opacity: 0.5, $hover-opacity: 1, $base-colour: currentColor, $duration: 0.25s, $easing: ease-in-out) {
+  // color: rgba($base-colour, $base-opacity);
+  color: $base-colour;
+  opacity: $base-opacity;
+  transition: opacity $duration $easing;
+
+  &:hover,
+  &:active {
+    // color: rgba($base-colour, $base-opacity + $hover-opacity);
+    opacity: $hover-opacity;
+  }
+}
+
+
+@mixin background-hover-opacity($base-colour: black, $base-opacity: 0, $hover-opacity: 0.1) {
+  background-color: rgba($base-colour, $base-opacity);
+
+  &:hover,
+  &:active {
+    background-color: rgba($base-colour, $base-opacity + $hover-opacity);
+  }
+}
+
+
+// ------------------------------------------------------------
+
+@mixin icon-relative($name, $position, $colour: inherit, $size: 1em, $spacing: 0.5em) {
+  position: relative;
+
+  @if not map-has-key($mdi-icons, $name) {
+    @error "No such icon '#{$name}'.";
+  }
+
+  $content: mdi($name);
+
+  @if type-of($colour) == number {
+    $colour: rgba(black, $colour);
+  }
+
+  $x-offset: -(1em + $spacing);
+  $top-offset: (1em - $size) / 2;
+
+  &:#{$position} {
+    display: inline-block;
+
+    position: absolute;
+    top: $top-offset;
+
+    @if $position == 'before' {
+      left: $x-offset;
+    } @else {
+      right: $x-offset;
+    }
+
+    font-family: "Material Design Icons";
+    content: $content;
+
+    color: $colour;
+    font-size: $size;
+    font-weight: normal;
+  }
+}
+
+
+// ------------------------------------------------------------
+
+@mixin icon-before($name, $colour: inherit, $size: 1em, $spacing: 0.5em) {
+  @include icon-relative($name, 'before', $colour, $size, $spacing);
+}
+
+@mixin icon-after($name, $colour: inherit, $size: 1em, $spacing: 0.5em) {
+  @include icon-relative($name, 'after', $colour, $size, $spacing);
+}
+
+
+// ------------------------------------------------------------
+
+@mixin hover-icon($name, $position, $colour: inherit, $size: 1em) {
+  &:hover {
+    @include icon-relative($name, $position, $colour, $size);
+  }
+}
+
+@mixin hover-icon-before($name, $colour: inherit, $size: 1em) {
+  @include hover-icon($name, 'before', $colour, $size);
+}
+
+@mixin hover-icon-after($name, $colour: inherit, $size: 1em) {
+  @include hover-icon($name, 'after', $colour, $size);
+}
+
+
+// ------------------------------------------------------------
+
+@mixin rounded-list-items($radius: 4px, $direction: 'vertical') {
+  border-radius: $radius;
+
+  & > * {
+    border-radius: 0 0 0 0;
+
+    &:first-child {
+      @if $direction == 'vertical' {
+        border-radius: $radius $radius 0 0;
+      } @else {
+        border-radius: $radius 0 0 $radius;
+      }
+    }
+
+    &:last-child {
+      @if $direction == 'vertical' {
+        border-radius: 0 0 $radius $radius;
+      } @else {
+        border-radius: 0 $radius $radius 0;
+      }
+    }
+  }
+}

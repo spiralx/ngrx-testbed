@@ -1,0 +1,65 @@
+@import 'variables';
+
+
+// ------------------------------------------------------------
+
+@mixin mobile {
+  @media only screen and (max-width: #{$layout-breakpoint-md - 1px}) {
+    @content;
+  }
+}
+
+@mixin desktop {
+  @media only screen and (min-width: #{$layout-breakpoint-md}) {
+    @content;
+  }
+}
+
+@mixin retina {
+  @media only screen and (-webkit-min-device-pixel-ratio: 2),
+  only screen and (min--moz-device-pixel-ratio: 2),
+  only screen and (-o-min-device-pixel-ratio: 2/1),
+  only screen and (min-device-pixel-ratio: 2),
+  only screen and (min-resolution: 192dpi),
+  only screen and (min-resolution: 2dppx) {
+    @content;
+  }
+}
+
+// ------------------------------------------------------------
+
+$layout-breakpoints: (
+  xs: $layout-breakpoint-xs,
+  sm: $layout-breakpoint-sm,
+  md: $layout-breakpoint-md,
+  lg: $layout-breakpoint-lg
+) !default;
+
+@mixin respond($breakpoint, $type: 'from') {
+  $width: map-get($layout-breakpoints, $breakpoint);
+
+  @if $type == 'from' {
+    @media only screen and (min-width: $width) {
+      @content;
+    }
+  } @else if $type == 'to' {
+    @media only screen and (max-width: ($width - 1px)) {
+      @content;
+    }
+  }
+}
+
+@mixin respond-to($breakpoint) {
+  @include respond($breakpoint, 'to') {
+    @content;
+  }
+}
+
+@mixin respond-between($lower-breakpoint, $upper-breakpoint) {
+  $lower: map-get($layout-breakpoints, $lower-breakpoint);
+  $upper: map-get($layout-breakpoints, $upper-breakpoint) - 1px;
+
+  @media only screen and (min-width: $lower) and (max-width: $upper) {
+    @content;
+  }
+}
