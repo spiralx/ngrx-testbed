@@ -5,14 +5,15 @@ import { Component, Input, Output, EventEmitter } from '@angular/core'
 @Component({
   selector: 'sl-share-item',
   template: `
-    <div class="share-item">
+    <div class="share-item row">
       <span>{{share.id}}</span>
       <span>{{share.count}}</span>
       <span>
         <button (click)="deleteShare.emit(share)"> Delete </button>
       </span>
     </div>
-  `
+  `,
+  styleUrls: ['./share-table.component.scss']
 })
 export class ShareItemComponent {
   @Input() share

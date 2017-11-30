@@ -1,6 +1,5 @@
 @import 'variables';
 
-
 // ------------------------------------------------------------
 
 @mixin mobile {
@@ -49,7 +48,7 @@ $layout-breakpoints: (
   }
 }
 
-@mixin respond-to($breakpoint) {
+@mixin respond-to($nbreakpoint) {
   @include respond($breakpoint, 'to') {
     @content;
   }

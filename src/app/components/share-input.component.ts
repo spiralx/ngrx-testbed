@@ -1,4 +1,32 @@
 import { Component, Output, EventEmitter } from '@angular/core'
+import { FormControl, Validators, NgForm } from '@angular/forms'
+
+// ----------------------------------------------------
+
+function getName(): string {
+  const v = Math.floor(Math.random() * 10)
+  return [
+    'James Skinner',
+    'Bob Lob',
+    'Rachel Otterway',
+    'Mike Hunt',
+    'Dick Weasel',
+    'John Smith',
+    'Phil Asheo',
+    'John-Saul Montoya',
+    'Puss Cat',
+    'Corinne Mayes'
+  ][v]
+}
+
+function getCount(): number {
+  const v = Math.floor(Math.random() * 10)
+  return (v + 1) * 1e3
+}
+
+export class ShareInput {
+  constructor(public holderName: string = getName(), public count: number = getCount()) {}
+}
 
 // ----------------------------------------------------
 
@@ -16,9 +44,17 @@ import { Component, Output, EventEmitter } from '@angular/core'
 export class ShareInputComponent {
   @Output() addShare = new EventEmitter()
 
-  add(holderName, count) {
-    this.addShare.emit({ holderName: holderName.value, count: count.value })
-    holderName.value = ''
-    count.value = '1'
+  model = new ShareInput()
+
+  submit() {
+    console.dir(this.model)
+    this.addShare.emit(this.model)
+    this.model = new ShareInput()
   }
+
+  // add(holderName, count) {
+  //   this.addShare.emit({ holderName: holderName.value, count: count.value })
+  //   holderName.value = getName()
+  //   count.value = this.getCount()
+  // }
 }

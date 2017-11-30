@@ -1,20 +1,35 @@
+@import 'theme';
+
+
+$table-border-colour: #888;
+
 .share-table {
-  border: solid 1px #888;
+  border: solid 1px $table-border-colour;
   margin: 1em auto 2em;
 
-  .header,
-  .share-item {
-    display: grid;
-    // grid-column-gap: 0.5em;
-    grid-template-columns: repeat(3, 1fr);
+  // .header,
+  // .row {
+  //   display: grid;
+  //   // grid-column-gap: 0.5em;
+  //   grid-template-columns: repeat(3, 1fr);
+  // }
 
-    span {
-      padding: 0.25em 0.5em;
-    }
+  .header {
+    color: white;
+    background-color: mat-color(map-get($theme, primary));
   }
 
-  .header + share-item {
-    border-top: solid 1px #888;
+  .header:not(:last-child) {
+    border-bottom: solid 1px $table-border-colour;
   }
 }
 
+.share-table .header,
+.share-item {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+
+  & > * {
+    padding: 0.25em 0.5em;
+  }
+}

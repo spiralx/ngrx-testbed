@@ -1,14 +1,19 @@
 <div class="share-input">
-  <form fxLayout="row" fxLayoutGap="16px">
+  <form #shareInputForm="ngForm" (ngSubmit)="submit()" fxLayout="row" fxLayoutGap="16px">
     <mat-form-field>
-      <input matInput #holderName required placeholder="Shareholder name">
+      <input matInput #holderName name="holderName" [(ngModel)]="model.holderName" required placeholder="Shareholder name">
     </mat-form-field>
+
     <mat-form-field>
-      <input matInput #count required type="number" placeholder="Share count" value="1">
+      <input matInput #count name="count" [(ngModel)]="model.count" required type="number" placeholder="Share count">
     </mat-form-field>
-    <button mat-button color="primary" (click)="add(holderName, count)">
+
+    <!-- <button mat-button type="submit" color="primary" (click)="add(holderName, count)"> -->
+    <button mat-button type="submit" [disabled]="!shareInputForm.form.valid" color="primary">
       <mat-icon>add</mat-icon>
       Add Share
     </button>
   </form>
 </div>
+
+<pre>{{model | json }}</pre>
