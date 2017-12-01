@@ -41,7 +41,7 @@ export function reducer (state = initialState, action: ShareActions.All): State 
 
     case ShareActions.DELETE_SHARES: {
       return adapter.removeMany(action.payload.ids, state);
-    }    
+    }
 
     case ShareActions.LOAD_SHARES: {
       return adapter.addAll(action.payload.shares, state);
@@ -50,7 +50,7 @@ export function reducer (state = initialState, action: ShareActions.All): State 
     case ShareActions.CLEAR_SHARES: {
       return adapter.removeAll({ ...state, selectedUserId: null });
     }
-    
+
     default: {
       return state
     }

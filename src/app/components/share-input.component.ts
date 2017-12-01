@@ -24,8 +24,13 @@ function getCount(): number {
   return (v + 1) * 1e3
 }
 
+// ----------------------------------------------------
+
 export class ShareInput {
-  constructor(public holderName: string = getName(), public count: number = getCount()) {}
+  constructor(
+    public holderName: string = getName(),
+    public count: number = getCount()
+  ) {}
 }
 
 // ----------------------------------------------------
@@ -51,10 +56,4 @@ export class ShareInputComponent {
     this.addShare.emit(this.model)
     this.model = new ShareInput()
   }
-
-  // add(holderName, count) {
-  //   this.addShare.emit({ holderName: holderName.value, count: count.value })
-  //   holderName.value = getName()
-  //   count.value = this.getCount()
-  // }
 }

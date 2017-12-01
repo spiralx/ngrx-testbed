@@ -35,7 +35,7 @@ export class ShareItemComponent {
       <sl-share-item
         *ngFor="let share of shares"
         [share]="share"
-        (deleteShare)="deleteShare.emit(share)"
+        (deleteShare)="deleteShare.emit(share.id)"
       ></sl-share-item>
     </div>
 
