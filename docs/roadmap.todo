@@ -1,0 +1,17 @@
+ngrx-testbed application:
+  Core Tasks:
+    Use @ngrx/effects:
+      ☐ Add `EffectsModule` to `AppModule`
+      ☐ Create `effects` directory and `ShareEffects` service
+      ☐ Effects class takes `AddShare` action, creates an `AddUser` action if required
+      ☐ `ModalEffects` to handle `ShowModal` and generate `ModelSuccess` or `ModalCancel`
+
+    Create share table model:
+      - See example at http://plnkr.co/edit/Hk77IPgofglnwQjF971E?p=info
+      ☐ Create `selectors` directory and `shares.ts`
+      ☐ Export `getSharesModel` function that combines `shares` and `users` entities
+      ☐ Create `getHolders` selector for shares
+
+    Sortable table:
+      ☐ Add `shareTable` reducer, actions and state to set how the table is sorted
+      ☐ Export `getShareTableModel` function that combines `sharesModel` and `shareTable` to get sorted data
