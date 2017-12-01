@@ -20,7 +20,10 @@ import * as UserActions from '../actions/users'
       (deleteShare)="deleteShare($event)"
     ></sl-share-table>
 
-    <sl-debug-panel [data]="shares$ | async"></sl-debug-panel>
+    <sl-debug-panel
+      title="Store: All shares"
+      [data]="shares$ | async"
+    ></sl-debug-panel>
   `
 })
 export class SharePageComponent {

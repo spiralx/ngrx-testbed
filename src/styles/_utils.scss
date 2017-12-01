@@ -1,0 +1,38 @@
+
+// ------------------------------------------------------------
+
+@function get-type($value) {
+  $valueType: type-of($value);
+
+  @if $valueType == number {
+    @if not unitless($value) {
+      @return $valueType + ' (' + unit($value) + ')';
+    }
+  }
+
+  @return $valueType;
+}
+
+@mixin _debug-map($map, $name: null) {
+  __inspector__ {
+    @if type-of($name) == string {
+      __name__: $name;
+    }
+
+    __length__: length($map);
+    __toString__: inspect($map);
+    __entries__ {
+      @each $key, $value in $map {
+        $valueType: get-type($value)
+
+        #{'(' + $valueType + ') ' + $key}: inspect($value)
+      }
+    }
+  }
+}
+
+@mixin debug-map($map, $name) {
+  @at-root {
+    @include _debug-map($map, $name)
+  }
+}
