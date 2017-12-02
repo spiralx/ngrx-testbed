@@ -13,19 +13,17 @@
   @return $valueType;
 }
 
-@mixin _debug-map($map, $name: null) {
+
+@mixin write-map-debug($map) {
   __inspector__ {
-    @if type-of($name) == string {
-      __name__: $name;
-    }
 
     __length__: length($map);
     __toString__: inspect($map);
     __entries__ {
       @each $key, $value in $map {
-        $valueType: get-type($value)
+        $valueType: get-type($value);
 
-        #{'(' + $valueType + ') ' + $key}: inspect($value)
+        #{'(' + $valueType + ') ' + $key}: inspect($value);
       }
     }
   }
@@ -33,6 +31,13 @@
 
 @mixin debug-map($map, $name) {
   @at-root {
-    @include _debug-map($map, $name)
+    __inspect__ {
+      // @if type-of($name) == string {
+        if
+        __name__: $name;
+      }
+
+      @include write-map-debug($map);
+    }
   }
 }

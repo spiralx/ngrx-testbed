@@ -1,25 +1,60 @@
 @import '~@angular/material/theming';
+
 // Plus imports for other components in your app.
 
 // Include the common styles for Angular Material. We include this here so that you only
 // have to load a single css file for Angular Material in your app.
 // Be sure that you only ever include this mixin once!
-@include mat-core();
+
+// $app-font-family: Roboto, "Helvetica Neue", Arial, sans-serif;
+
+// $title: mat-typography-level(19px, 32px, 500),
+// $body-2: mat-typography-level(18px, 32px, 500),
+// $body-1: mat-typography-level(18px, 26px, 400),
+
+
+$app-main-font-family: Raleway, "Segoe UI", "Helvetica Neue", sans-serif;
+// $app-heading-font-family: Merriweather, Roboto"
+$app-heading-font-family: "Roboto Slab", Merriweather, Georgia, serif;
+
+$app-typography-config: mat-typography-config(
+  $font-family: quote($app-main-font-family),
+  $display-4:     mat-typography-level(112pt, 112pt, 300),
+  $display-3:     mat-typography-level(56pt, 56pt, 400),
+  $display-2:     mat-typography-level(45pt, 48pt, 400),
+  $display-1:     mat-typography-level(34pt, 40pt, 400),
+  $headline:      mat-typography-level(24pt, 32pt, 400),
+  $title:         mat-typography-level(20pt, 32pt, 700, quote($app-heading-font-family)),
+  $subheading-2:  mat-typography-level(16pt, 28pt, 400, quote($app-heading-font-family)),
+  $subheading-1:  mat-typography-level(14pt, 24pt, 400, quote($app-heading-font-family)),
+  $body-2:        mat-typography-level(14pt, 24pt, 500),
+  $body-1:        mat-typography-level(14pt, 20pt, 400),
+  $button:        mat-typography-level(14pt, 14pt, 500),
+  $input:         mat-typography-level(16pt, 1.125, 400)
+);
+
+// ------------------------------------------------------------
 
 // Define the palettes for your theme using the Material Design palettes available in palette.scss
-// (imported above). For each palette, you can optionally specify a default, lighter, and darker
-// hue.
-// $theme-primary: mat-palette($mat-indigo);
-$theme-primary: mat-palette($mat-blue, 700, 400, 900);
-$theme-accent:  mat-palette($mat-pink, A200, A100, A400);
+// (imported above). For each palette you can optionally specify default, lighter, and darker hues.
 
-// The warn palette is optional (defaults to red).
-$theme-warn:    mat-palette($mat-red);
+// $theme-primary: mat-palette($mat-indigo);
+
+// $theme-primary: mat-palette($mat-blue, 700, 400, 900);
+// $theme-accent:  mat-palette($mat-pink, A200, A100, A400);
+// $theme-warn:    mat-palette($mat-red);
+
+$theme-primary: mat-palette($mat-light-blue, 400);
+$theme-accent:  mat-palette($mat-pink, 500, A200, 800);
+$theme-warn:    mat-palette($mat-deep-orange, A400, A200, 900);
 
 // Create the theme object (a Sass map containing all of the palettes).
 $theme: mat-light-theme($theme-primary, $theme-accent, $theme-warn);
 
-// Include theme styles for core and each component used in your app.
-// Alternatively, you can import and @include the theme mixins for each component
-// that you are using.
+// ------------------------------------------------------------
+
+// Generate all of the core styles that are not theme-dependent.
+@include mat-core($app-typography-config);
+
+// Include theme-based styles for Material core and components.
 @include angular-material-theme($theme);
