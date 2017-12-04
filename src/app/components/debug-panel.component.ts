@@ -6,7 +6,7 @@ import { Component, Input } from '@angular/core'
   selector: 'sl-debug-panel',
   template: `
     <mat-card class="debug-panel-card">
-      <mat-card-header color="primary">
+      <mat-card-header class="bb-1">
         <mat-card-title>{{title}}</mat-card-title>
       </mat-card-header>
       <mat-card-content>
@@ -18,13 +18,22 @@ import { Component, Input } from '@angular/core'
     </mat-card>
   `,
   styles: [`
-    .debug-panel-card {
+    .debug-panel-card.mat-card {
       max-width: 800px;
       margin: 1em auto;
+
+      .mat-card-header-text {
+        margin: 0;
+      }
+
+      .bb-1 {
+        border-bottom: solid 1px #ccc;
+      }
 
       pre {
         font: normal 0.9rem/1.4 Consolas, Inconsolata, "Courier New", monospace;
         white-space: pre-wrap;
+        margin-top: 8px;
       }
     }
   `]
