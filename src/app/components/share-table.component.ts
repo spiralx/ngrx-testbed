@@ -7,6 +7,7 @@ import { Component, Input, Output, EventEmitter } from '@angular/core'
   template: `
     <div class="share-item row">
       <span>{{share.id}}</span>
+      <span>{{share.user.name}}</span>
       <span>{{share.count}}</span>
       <span>
         <button (click)="deleteShare.emit(share)"> Delete </button>
@@ -28,6 +29,7 @@ export class ShareItemComponent {
     <div class="share-table">
       <div class="header">
         <span class="header id">Share ID</span>
+        <span class="header holder">Shareholder</span>
         <span class="header count">Count</span>
         <span class="header actions">Actions</span>
       </div>
@@ -45,6 +47,8 @@ export class ShareItemComponent {
 })
 export class ShareTableComponent {
   @Input() shares
+  @Input() shareholders
+
   @Output() addShare = new EventEmitter()
   @Output() deleteShare = new EventEmitter()
 }

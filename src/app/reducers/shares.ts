@@ -18,37 +18,37 @@ export const initialState: State = adapter.getInitialState()
 
 
 export function reducer (state = initialState, action: ShareActions.All): State {
-  switch(action.type) {
+  switch (action.type) {
     case ShareActions.ADD_SHARE: {
-      return adapter.addOne(action.payload.share, state);
+      return adapter.addOne(action.payload.share, state)
     }
 
     case ShareActions.ADD_SHARES: {
-      return adapter.addMany(action.payload.shares, state);
+      return adapter.addMany(action.payload.shares, state)
     }
 
     case ShareActions.UPDATE_SHARE: {
-      return adapter.updateOne(action.payload.share, state);
+      return adapter.updateOne(action.payload.share, state)
     }
 
     case ShareActions.UPDATE_SHARES: {
-      return adapter.updateMany(action.payload.shares, state);
+      return adapter.updateMany(action.payload.shares, state)
     }
 
     case ShareActions.DELETE_SHARE: {
-      return adapter.removeOne(action.payload.id, state);
+      return adapter.removeOne(action.payload.id, state)
     }
 
     case ShareActions.DELETE_SHARES: {
-      return adapter.removeMany(action.payload.ids, state);
+      return adapter.removeMany(action.payload.ids, state)
     }
 
     case ShareActions.LOAD_SHARES: {
-      return adapter.addAll(action.payload.shares, state);
+      return adapter.addAll(action.payload.shares, state)
     }
 
     case ShareActions.CLEAR_SHARES: {
-      return adapter.removeAll({ ...state, selectedUserId: null });
+      return adapter.removeAll({ ...state, selectedUserId: null })
     }
 
     default: {
