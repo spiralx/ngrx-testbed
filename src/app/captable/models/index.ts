@@ -1,4 +1,3 @@
-export { Share } from './share'
-export { ShareClass } from './share-class'
-
-export { shareTableModel } from './share-table'
+export * from './share'
+export * from './share-class'
+export * from './share-table'

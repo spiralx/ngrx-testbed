@@ -1,2 +1,2 @@
 export * from './models'
-export { CaptableModule } from './captable.module'
+export * from './captable.module'

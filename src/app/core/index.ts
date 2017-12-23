@@ -1,3 +1,3 @@
 export * from './models'
-export { ApiService } from './services'
-export { CoreModule } from './core.module'
+export * from './services'
+export * from './core.module'

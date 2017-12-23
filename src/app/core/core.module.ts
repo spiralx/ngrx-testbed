@@ -1,23 +1,17 @@
-import { NgModule } from '@angular/core'
+import { NgModule, Optional, SkipSelf } from '@angular/core'
 import { CommonModule } from '@angular/common'
-
 import { HttpClientModule } from '@angular/common/http'
 
 // ----------------------------------------------------
 
-import { MaterialModule } from '../material'
-
 import { ApiService } from './services'
 
 import { AppComponent } from './containers/app/app.component'
-import { DebugPanelComponent } from './components/debug-panel.component'
-import { HttpClient } from '@angular/common/http/src/client';
 
 // ----------------------------------------------------
 
 export const COMPONENTS = [
-  AppComponent,
-  DebugPanelComponent
+  AppComponent
 ]
 
 // ----------------------------------------------------
@@ -25,14 +19,23 @@ export const COMPONENTS = [
 @NgModule({
   imports: [
     CommonModule,
-    HttpClientModule,
-    // RouterModule,
-    MaterialModule
+    HttpClientModule
   ],
   declarations: COMPONENTS,
   exports: COMPONENTS,
+  providers: [
+    ApiService
+  ]
 })
 export class CoreModule {
+  constructor (
+    @Optional() @SkipSelf() parentModule: CoreModule
+  ) {
+    if (parentModule) {
+      throw new Error('CoreModule is already loaded. Import only in AppModule')
+    }
+  }
+
   static forRoot() {
     return {
       ngModule: CoreModule,

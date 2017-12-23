@@ -1,4 +1,4 @@
-import { Named } from '../../core'
+import { Named } from '@app/core'
 
 // ----------------------------------------------------
 
