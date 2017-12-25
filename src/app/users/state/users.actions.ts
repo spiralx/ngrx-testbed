@@ -1,5 +1,7 @@
 import { Action } from '@ngrx/store'
 
+// ----------------------------------------------------
+
 import { User } from '../models'
 
 // ----------------------------------------------------
@@ -66,13 +68,13 @@ export class ClearUsers implements Action {
 
 export class SetCurrentUser implements Action {
   readonly type = SET_CURRENT_USER
-  
+
   constructor(public payload: { id: number }) {}
 }
 
 export class ClearCurrentUser implements Action {
   readonly type = CLEAR_CURRENT_USER
-  
+
   constructor(public payload: {}) {}
 }
 

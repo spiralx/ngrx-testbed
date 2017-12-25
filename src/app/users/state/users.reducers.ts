@@ -1,8 +1,11 @@
 import { EntityState, EntityAdapter, createEntityAdapter } from '@ngrx/entity'
 
+// ----------------------------------------------------
+
 import { User } from '../models'
-import * as UserActions from '../actions/users'
-import { compareByName } from './utils'
+import * as UserActions from './users.actions'
+
+import { compareByName } from '@app/shared/utils/state'
 
 // ----------------------------------------------------
 
@@ -73,5 +76,3 @@ export function reducer(
     }
   }
 }
-
-export const getCurrentUserId = (state: State): number | null => state.currentUserId

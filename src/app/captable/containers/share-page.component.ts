@@ -6,11 +6,13 @@ import 'rxjs/add/observable/combineLatest'
 import 'rxjs/add/operator/let'
 import 'rxjs/add/operator/map'
 
-import { Share, User } from '../models'
+// ----------------------------------------------------
+
+import { Share, Investor } from '../models'
 import { shareTableModel } from '../models/share-table'
-import { State, selectAllShares, selectUserEntities } from '../reducers/index'
-import * as ShareActions from '../actions/shares'
-import * as UserActions from '../actions/users'
+import { State, getAllShares, getInvestorEntities } from '../state'
+import * as ShareActions from '../state/shares.actions'
+import * as InvestorActions from '../state/investors.actions'
 
 // ----------------------------------------------------
 
@@ -33,33 +35,31 @@ import * as UserActions from '../actions/users'
   `
 })
 export class SharePageComponent {
-  shares$: Observable<Share[]>
-  user$: Observable<User[]>
-
   shareTableModel$ = null
 
   private nextId = 1
 
-  constructor(private store: Store<State>) {
-    console.dir(store)
-    // this.shares$ = store.select(selectAllShares)
-    // this.s$ = store.select(selectAllShares)
+  // --------------------------------------------------
 
+  constructor(private store: Store<State>) {
     this.shareTableModel$ = Observable
       .combineLatest(
-        store.select(selectAllShares),
-        store.select(selectUserEntities)
+        store.select(getAllShares),
+        store.select(getInvestorEntities)
       )
       .let(shareTableModel())
   }
 
+  // --------------------------------------------------
+
   addShare({ holderName, count }) {
     const id = this.nextId++
 
-    this.store.dispatch(new UserActions.AddUser({
-      user: {
+    this.store.dispatch(new InvestorActions.AddInvestor({
+      investor: {
         id,
-        name: holderName
+        name: holderName,
+        address: null
       }
     }))
 
@@ -67,11 +67,13 @@ export class SharePageComponent {
       share: {
         id,
         count,
-        holder: id,
+        investor: id,
         shareClass: 1
       }
     }))
   }
+
+  // --------------------------------------------------
 
   deleteShare(id) {
     this.store.dispatch(new ShareActions.DeleteShare({ id }))

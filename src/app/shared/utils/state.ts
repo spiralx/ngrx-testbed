@@ -1,4 +1,4 @@
-import { Named } from '../models'
+import { Named } from '@app/core/models'
 
 // ----------------------------------------------------
 

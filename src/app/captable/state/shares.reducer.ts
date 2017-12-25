@@ -1,8 +1,11 @@
 import { EntityState, EntityAdapter, createEntityAdapter } from '@ngrx/entity'
 
+// ----------------------------------------------------
+
 import { Share } from '../models'
-import * as ShareActions from '../actions/shares'
-import { compareByName } from './utils'
+import * as ShareActions from './shares.actions'
+
+// import { compareByName } from '@app/shared/utils/state'
 
 // ----------------------------------------------------
 
@@ -48,7 +51,7 @@ export function reducer (state = initialState, action: ShareActions.All): State 
     }
 
     case ShareActions.CLEAR_SHARES: {
-      return adapter.removeAll({ ...state, selectedUserId: null })
+      return adapter.removeAll({ ...state })
     }
 
     default: {

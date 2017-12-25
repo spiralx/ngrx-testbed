@@ -1,7 +1,10 @@
 import { Component } from '@angular/core'
 import { Store } from '@ngrx/store'
+import { Observable } from 'rxjs/Observable'
 
-import { State, selectAllShares } from './reducers'
+// ----------------------------------------------------
+
+import { State, getShowSideNav } from '@app/reducers'
 
 // ----------------------------------------------------
 
@@ -11,9 +14,9 @@ import { State, selectAllShares } from './reducers'
   styleUrls: [ './app.component.scss' ]
 })
 export class AppComponent {
-  name = 'James'
+  showSideNav$: Observable<boolean>
 
   constructor(private store: Store<State>) {
-
+    this.showSideNav$ = this.store.select(getShowSideNav)
   }
 }

@@ -1,9 +1,9 @@
-<div class="screen-wrapper mat-app-background">
-  <mat-toolbar color="primary">
-    <span>Hello {{name}}</span>
-  </mat-toolbar>
+<sl-layout>
+  <sl-sidenav [open]="showSideNav$ | async"></sl-sidenav>
+
+  <sl-toolbar></sl-toolbar>
 
   <div class="content">
     <sl-share-page></sl-share-page>
   </div>
-</div>
+</sl-layout>

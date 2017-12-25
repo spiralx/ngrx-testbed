@@ -2,9 +2,7 @@ import { Named } from '@app/core'
 
 // ----------------------------------------------------
 
-export interface Share {
+export interface Investor extends Named {
   id: number
-  count: number
-  investor: number
-  shareClass: number
+  address: string | null
 }

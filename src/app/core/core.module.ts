@@ -7,11 +7,17 @@ import { HttpClientModule } from '@angular/common/http'
 import { ApiService } from './services'
 
 import { AppComponent } from './containers/app/app.component'
+import { LayoutComponent } from './components/layout/layout.component'
+import { SidenavComponent } from './components/sidenav/sidenav.component'
+import { ToolbarComponent } from './components/toolbar/toolbar.component'
 
 // ----------------------------------------------------
 
 export const COMPONENTS = [
-  AppComponent
+  AppComponent,
+  LayoutComponent,
+  SidenavComponent,
+  ToolbarComponent
 ]
 
 // ----------------------------------------------------

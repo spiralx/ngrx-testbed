@@ -3,17 +3,17 @@
 
 export const shareTableModel = () => {
   return state => state
-    .map(([ shares, userDict ]) => {
+    .map(([ shares, investorDict ]) => {
       // out(`shareTableModel(shares, userDict)`, { shares, userDict }, true)
 
       const shareholders = new Set()
 
       const items = shares.map(share => {
-        const user = userDict[ share.holder ]
+        const investor = investorDict[ share.investor ]
 
-        shareholders.add(user)
+        shareholders.add(investor)
 
-        return { ...share, user }
+        return { ...share, investor }
       })
 
       return {
