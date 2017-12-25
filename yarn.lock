@@ -183,6 +183,10 @@
   version "4.1.1"
   resolved "https://registry.yarnpkg.com/@ngrx/entity/-/entity-4.1.1.tgz#ce82347ad96891955e80818c6dcc561c05c7a4ce"
 
+"@ngrx/router-store@^4.1.1":
+  version "4.1.1"
+  resolved "https://registry.yarnpkg.com/@ngrx/router-store/-/router-store-4.1.1.tgz#17fac7c0f5ffddef8b75e9a74ed2cb09074f3bca"
+
 "@ngrx/store-devtools@^4.1.1":
   version "4.1.1"
   resolved "https://registry.yarnpkg.com/@ngrx/store-devtools/-/store-devtools-4.1.1.tgz#20745c39c7560fdc05fa4f22638442a7ec7dd676"

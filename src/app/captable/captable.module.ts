@@ -1,4 +1,5 @@
 import { NgModule } from '@angular/core'
+import { RouterModule, Routes } from '@angular/router'
 import { StoreModule } from '@ngrx/store'
 
 // ----------------------------------------------------
@@ -14,6 +15,12 @@ import { reducers } from './state'
 
 // ----------------------------------------------------
 
+const routes: Routes = [
+  { path: '', component: SharePageComponent }
+]
+
+// ----------------------------------------------------
+
 const COMPONENTS = [
   SharePageComponent,
   ShareTableComponent,
@@ -26,6 +33,7 @@ const COMPONENTS = [
 @NgModule({
   imports: [
     SharedModule,
+    RouterModule.forChild(routes),
     StoreModule.forFeature('captable', reducers)
   ],
   declarations: COMPONENTS,

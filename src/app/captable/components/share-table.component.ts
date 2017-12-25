@@ -7,7 +7,7 @@ import { Component, Input, Output, EventEmitter } from '@angular/core'
   template: `
     <div class="share-item row">
       <span>{{share.id}}</span>
-      <span>{{share.user.name}}</span>
+      <span>{{share.investor.name}}</span>
       <span>{{share.count}}</span>
       <span>
         <button (click)="deleteShare.emit(share)"> Delete </button>

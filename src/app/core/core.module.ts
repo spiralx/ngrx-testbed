@@ -1,8 +1,11 @@
 import { NgModule, Optional, SkipSelf } from '@angular/core'
 import { CommonModule } from '@angular/common'
+import { RouterModule } from '@angular/router'
 import { HttpClientModule } from '@angular/common/http'
 
 // ----------------------------------------------------
+
+import { SharedModule } from '@app/shared'
 
 import { ApiService } from './services'
 
@@ -25,7 +28,9 @@ export const COMPONENTS = [
 @NgModule({
   imports: [
     CommonModule,
-    HttpClientModule
+    RouterModule,
+    HttpClientModule,
+    SharedModule
   ],
   declarations: COMPONENTS,
   exports: COMPONENTS,

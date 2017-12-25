@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core'
 import { CommonModule } from '@angular/common'
-import { ReactiveFormsModule } from '@angular/forms'
+import { FormsModule } from '@angular/forms'
 
 
 import { CdkTableModule } from '@angular/cdk/table'
@@ -43,8 +43,56 @@ import { DebugPanelComponent } from './components/debug-panel.component'
 
 // ----------------------------------------------------
 
-export const COMPONENTS = [
+const COMPONENTS = [
   DebugPanelComponent
+]
+
+// ----------------------------------------------------
+
+const MODULES = [
+  // Angular modules
+  CommonModule,
+  FormsModule,
+  // ReactiveFormsModule,
+
+  // Flex layout
+  FlexLayoutModule,
+
+  // CDk
+  CdkTableModule,
+  OverlayModule,
+
+  // Material
+  MatAutocompleteModule,
+  MatButtonModule,
+  MatButtonToggleModule,
+  MatCardModule,
+  MatCheckboxModule,
+  MatChipsModule,
+  MatDatepickerModule,
+  MatDialogModule,
+  MatExpansionModule,
+  MatGridListModule,
+  MatIconModule,
+  MatInputModule,
+  MatListModule,
+  MatMenuModule,
+  MatProgressBarModule,
+  MatProgressSpinnerModule,
+  MatRadioModule,
+  MatRippleModule,
+  MatSelectModule,
+  MatSidenavModule,
+  MatSlideToggleModule,
+  MatSliderModule,
+  MatSnackBarModule,
+  MatTabsModule,
+  MatToolbarModule,
+  MatTooltipModule,
+
+  MatNativeDateModule,
+  MatSortModule,
+  MatPaginatorModule
 ]
 
 // ----------------------------------------------------
@@ -55,49 +103,10 @@ export const COMPONENTS = [
  */
 @NgModule({
   declarations: COMPONENTS,
+  imports: MODULES,
   exports: [
-    // Angular modules
-    CommonModule,
-    ReactiveFormsModule,
-
-    // Flex layout
-    FlexLayoutModule,
-
-    // CDk
-    CdkTableModule,
-    OverlayModule,
-
-    // Material
-    MatAutocompleteModule,
-    MatButtonModule,
-    MatButtonToggleModule,
-    MatCardModule,
-    MatCheckboxModule,
-    MatChipsModule,
-    MatDatepickerModule,
-    MatDialogModule,
-    MatExpansionModule,
-    MatGridListModule,
-    MatIconModule,
-    MatInputModule,
-    MatListModule,
-    MatMenuModule,
-    MatProgressBarModule,
-    MatProgressSpinnerModule,
-    MatRadioModule,
-    MatRippleModule,
-    MatSelectModule,
-    MatSidenavModule,
-    MatSlideToggleModule,
-    MatSliderModule,
-    MatSnackBarModule,
-    MatTabsModule,
-    MatToolbarModule,
-    MatTooltipModule,
-
-    MatNativeDateModule,
-    MatSortModule,
-    MatPaginatorModule,
+    // Angular and Material modules
+    ...MODULES,
 
     // Our components
     ...COMPONENTS
