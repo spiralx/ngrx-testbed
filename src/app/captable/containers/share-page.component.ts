@@ -30,7 +30,7 @@ import * as InvestorActions from '../state/investors.actions'
 
     <sl-debug-panel
       title="Store: All shares"
-      [data]="shares$ | async"
+      [data]="shareTableModel$ | async"
     ></sl-debug-panel>
   `
 })
